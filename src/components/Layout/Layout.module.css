@@ -1,0 +1,13 @@
+.layout{
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.header{
+  height: 80px;
+background-color: rgb(94, 199, 164);
+}
+.main{
+  flex-grow: 1;
+}

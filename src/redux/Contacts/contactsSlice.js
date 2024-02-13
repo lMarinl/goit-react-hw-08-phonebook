@@ -1,5 +1,9 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { apiGetContacts, apiAddContact, apiDeleteContact } from '../operations';
+import {
+  apiGetContacts,
+  apiAddContact,
+  apiDeleteContact,
+} from './contactsOperations';
 import { STATUSES } from '../../utils/Statuses';
 
 const initialState = {
@@ -8,30 +12,29 @@ const initialState = {
   error: null,
 };
 
-
 const statusPending = state => {
   state.status = STATUSES.pending;
   state.error = null;
-}
+};
 
 const statusRejected = (state, action) => {
   state.status = STATUSES.error;
   state.error = action.payload;
-}
+};
 const contactsSlice = createSlice({
   name: 'contacts',
   initialState,
 
   extraReducers: builder =>
     builder
-      
+
       .addCase(apiGetContacts.pending, statusPending)
       .addCase(apiGetContacts.fulfilled, (state, action) => {
         state.status = STATUSES.success;
         state.contacts = action.payload;
       })
       .addCase(apiGetContacts.rejected, statusRejected)
-      
+
       .addCase(apiAddContact.pending, statusPending)
       .addCase(apiAddContact.fulfilled, (state, action) => {
         state.status = STATUSES.success;
@@ -48,7 +51,6 @@ const contactsSlice = createSlice({
           contact => contact.id !== contactId
         );
       })
-      .addCase(apiDeleteContact.rejected, statusRejected)
-}
-);
+      .addCase(apiDeleteContact.rejected, statusRejected),
+});
 export const contactsReducers = contactsSlice.reducer;

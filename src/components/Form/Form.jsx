@@ -1,12 +1,11 @@
 import { useDispatch, useSelector } from 'react-redux';
 import Notiflix from 'notiflix';
-import { apiAddContact } from '../../redux/operations';
-import { selectedContacts } from '../../redux/contactsSlice/contactsSelectors';
+import { apiAddContact } from '../../redux/Contacts/contactsOperations';
+import { selectedContacts } from '../../redux/Contacts/contactsSelectors';
 import css from './Form.module.css';
-export const Form = ( ) => {
-
+export const Form = () => {
   const dispatch = useDispatch();
-  const contacts  = useSelector(selectedContacts);
+  const contacts = useSelector(selectedContacts);
 
   const handlerAddContact = formData => {
     const hasDuplicates = contacts.some(
@@ -24,15 +23,14 @@ export const Form = ( ) => {
   const handelSubmit = event => {
     event.preventDefault();
     const name = event.currentTarget.elements.name.value;
-    const phone  = event.currentTarget.number.value;
+    const phone = event.currentTarget.number.value;
 
     const formData = {
       name,
-      phone ,
+      phone,
     };
     handlerAddContact(formData);
     event.currentTarget.reset();
-
   };
 
   return (

@@ -1,4 +1,5 @@
 .phoneBookContainer {
+  flex-grow: 1;
   max-width: 400px;
   width: 100%;
   padding: 60px;
