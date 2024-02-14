@@ -1,9 +1,10 @@
 import { Navigate, Route, Routes } from 'react-router-dom';
-import { Suspense, lazy } from 'react';
-import { useSelector } from 'react-redux';
+import { Suspense, lazy, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 
 import { ContactsList, Form, Filter, Layout, Loader } from 'components';
 import { selectedStatus } from '../redux/Contacts/contactsSelectors';
+import { apiRefreshUser } from '../redux/Auth/authOperations';
 
 import { STATUSES } from '../utils/Statuses';
 import css from './App.module.css';
@@ -15,6 +16,10 @@ const ContactsPage = lazy(() => import('Page/ContactsPage/ContactsPage'));
 
 export const App = () => {
   const status = useSelector(selectedStatus);
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(apiRefreshUser());
+  }, [dispatch]);
   return (
     <>
       <Layout>

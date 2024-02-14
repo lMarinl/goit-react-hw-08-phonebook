@@ -12,7 +12,7 @@ export const apiRegisterUser = createAsyncThunk(
 
       return data;
     } catch (error) {
-      thunkApi.rejectWithValue(error.message);
+      return thunkApi.rejectWithValue(error.message);
     }
   }
 );
@@ -26,7 +26,24 @@ export const apiLoginUser = createAsyncThunk(
 
       return data;
     } catch (error) {
-      thunkApi.rejectWithValue(error.message);
+      return thunkApi.rejectWithValue(error.message);
+    }
+  }
+);
+
+export const apiRefreshUser = createAsyncThunk(
+  'auth/apiRefreshUser',
+  async (_, thunkApi) => {
+    const state = thunkApi.getState();
+    const token = state.auth.token;
+    if (!token) return thunkApi.rejectWithValue("You don't have a token!");
+    try {
+      setToken(token);
+      const { data } = await AuthInstance.get('/users/current');
+      console.log('data: ', data);
+      return data;
+    } catch (error) {
+      return thunkApi.rejectWithValue(error.message);
     }
   }
 );

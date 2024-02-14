@@ -31,7 +31,7 @@ const RegisterPage = () => {
             type="text"
             name="userName"
             placeholder="Enter your name"
-            minLength={2}
+            minLength={7}
             required
           />
         </label>

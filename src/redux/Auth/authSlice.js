@@ -1,6 +1,10 @@
 import { createSlice, isAnyOf } from '@reduxjs/toolkit';
 import { STATUSES } from '../../utils/Statuses';
-import { apiLoginUser, apiRegisterUser } from './authOperations';
+import {
+  apiLoginUser,
+  apiRefreshUser,
+  apiRegisterUser,
+} from './authOperations';
 
 const initialState = {
   token: null,
@@ -17,24 +21,29 @@ const authSlice = createSlice({
   extraReducers: builder =>
     builder
       .addCase(apiRegisterUser.fulfilled, (state, action) => {
-        console.log('action: ', action);
         state.status = STATUSES.success;
         state.isLoggedIn = true;
         state.userData = action.payload.user;
         state.token = action.payload.token;
-        console.log('action: ', action.payload);
       })
+
       .addCase(apiLoginUser.fulfilled, (state, action) => {
         state.status = STATUSES.success;
         state.isLoggedIn = true;
         state.userData = action.payload.user;
         state.token = action.payload.token;
       })
+      .addCase(apiRefreshUser.fulfilled, (state, action) => {
+        state.status = STATUSES.success;
+        state.isLoggedIn = true;
+        state.userData = action.payload;
+      })
+
       .addMatcher(
         isAnyOf(
           apiRegisterUser.pending,
-          apiLoginUser.pending
-          // apiRefreshUser.pending
+          apiLoginUser.pending,
+          apiRefreshUser.pending
         ),
         state => {
           state.status = STATUSES.pending;
@@ -42,10 +51,15 @@ const authSlice = createSlice({
         }
       )
       .addMatcher(
-        isAnyOf(apiRegisterUser.rejected, apiLoginUser.rejected),
+        isAnyOf(
+          apiRegisterUser.rejected,
+          apiLoginUser.rejected,
+          apiRefreshUser.rejected
+        ),
         (state, action) => {
           state.status = STATUSES.error;
           state.error = action.payload;
+          console.log('  state.error: ', state.error);
         }
       ),
 });
