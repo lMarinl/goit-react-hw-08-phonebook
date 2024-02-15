@@ -1,6 +1,6 @@
 import { Navigate, Route, Routes } from 'react-router-dom';
 import { Suspense, lazy, useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 
 import { Layout, Loader, RestrictedRoute, PrivateRoute } from 'components';
 import { apiRefreshUser } from '../redux/Auth/authOperations';
