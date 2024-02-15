@@ -19,20 +19,18 @@ export const Form = () => {
     }
     dispatch(apiAddContact(formData));
   };
-
   const handelSubmit = event => {
     event.preventDefault();
     const name = event.currentTarget.elements.name.value;
-    const phone = event.currentTarget.number.value;
+    const number = event.currentTarget.number.value;
 
     const formData = {
       name,
-      phone,
+      number,
     };
     handlerAddContact(formData);
     event.currentTarget.reset();
   };
-
   return (
     <form className={css.form} onSubmit={handelSubmit}>
       <label className={css.label}>
@@ -44,7 +42,7 @@ export const Form = () => {
         <input className={css.formInput} type="tel" name="number" required />
       </label>
       <button className={css.buttonSubmit} type="submit">
-        Add number{' '}
+        Add number
       </button>
     </form>
   );

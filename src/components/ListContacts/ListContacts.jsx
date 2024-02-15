@@ -14,20 +14,25 @@ import { apiGetContacts } from '../../redux/Contacts/contactsOperations.js';
 import { STATUSES } from 'utils/Statuses.js';
 
 export const ContactsList = () => {
+  const dispatch = useDispatch();
   const contacts = useSelector(selectedContacts);
   const error = useSelector(selectedError);
   const status = useSelector(selectedStatus);
 
   const filter = useSelector(selectedFilter);
-  const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(apiGetContacts());
   }, [dispatch]);
 
   const filteredContacts = () => {
-    return contacts?.filter(contact =>
-      contact.name.toLowerCase().includes(filter.trim().toLowerCase())
+    return (
+      Array.isArray(contacts) &&
+      contacts.filter(
+        contact =>
+          contact?.name &&
+          contact.name.toLowerCase().includes(filter.trim().toLowerCase())
+      )
     );
   };
   const getFilteredContacts = filteredContacts();
@@ -35,9 +40,10 @@ export const ContactsList = () => {
     <div>
       {error && status === STATUSES.error && <p>{error}</p>}
       <ul>
-        {getFilteredContacts?.map(contact => (
-          <ContactItem key={contact.id} {...contact} />
-        ))}
+        {Array.isArray(getFilteredContacts) &&
+          getFilteredContacts?.map(contact => (
+            <ContactItem key={contact.id} {...contact} />
+          ))}
       </ul>
     </div>
   );
