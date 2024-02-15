@@ -10,8 +10,8 @@ export const apiGetContacts = createAsyncThunk(
     if (!token) return thunkApi.rejectWithValue('No have token');
     try {
       setToken(token);
-      const contacts = await AuthInstance.get('/contacts');
-      return contacts.data;
+      const { data } = await AuthInstance.get('/contacts');
+      return data;
     } catch (error) {
       return thunkApi.rejectWithValue(error.message);
     }
@@ -26,8 +26,8 @@ export const apiAddContact = createAsyncThunk(
     const token = state.auth.token;
     if (!token) return thunkApi.rejectWithValue('No have token');
     try {
-      const { contacts } = await AuthInstance.post('/contacts', formData);
-      return contacts;
+      const { data } = await AuthInstance.post('/contacts', formData);
+      return data;
     } catch (error) {
       return thunkApi.rejectWithValue(error.message);
     }
@@ -37,8 +37,8 @@ export const apiDeleteContact = createAsyncThunk(
   'contact/apiDeleteContact',
   async (id, thunkApi) => {
     try {
-      const { data } = await AuthInstance.delete('/contacts' / { id });
-      return data;
+      await AuthInstance.delete('/contacts' / { id });
+      return id;
     } catch (error) {
       return thunkApi.rejectWithValue(error.message);
     }

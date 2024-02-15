@@ -15,12 +15,6 @@ import { contactsReducers } from './Contacts/contactsSlice.js';
 import { filterReducers } from './filterSlice/filterSlice.js';
 import { authReducer } from './Auth/authSlice.js';
 
-const ContactsConfig = {
-  key: 'contacts',
-  storage,
-  whitelist: ['contacts'],
-};
-
 const authConfig = {
   key: 'auth',
   storage,
@@ -29,7 +23,7 @@ const authConfig = {
 
 export const store = configureStore({
   reducer: {
-    contacts: persistReducer(ContactsConfig, contactsReducers),
+    contacts: contactsReducers,
     auth: persistReducer(authConfig, authReducer),
     filter: filterReducers,
   },
