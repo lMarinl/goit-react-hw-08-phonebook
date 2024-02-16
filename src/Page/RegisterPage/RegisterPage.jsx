@@ -1,6 +1,6 @@
 import { useDispatch } from 'react-redux';
-
 import { apiRegisterUser } from '../../redux/Auth/authOperations';
+import css from './RegisterPage.module.css';
 
 const RegisterPage = () => {
   const dispatch = useDispatch();
@@ -21,42 +21,44 @@ const RegisterPage = () => {
   };
 
   return (
-    <div>
-      <h1>RegisterPage</h1>
+    <form className={css.form} onSubmit={onSubmit}>
+      <label className={css.label}>
+        <span className={css.labelSpan}> Name</span>
+        <input
+          className={css.input}
+          type="text"
+          name="userName"
+          placeholder="Enter your name"
+          minLength={7}
+          required
+        />
+      </label>
+      <label className={css.label}>
+        <span className={css.labelSpan}> Email</span>
 
-      <form onSubmit={onSubmit}>
-        <label>
-          Name:
-          <input
-            type="text"
-            name="userName"
-            placeholder="Enter your name"
-            minLength={7}
-            required
-          />
-        </label>
-        <label>
-          Email:
-          <input
-            type="email"
-            name="userEmail"
-            placeholder="Enter your email"
-            required
-          />
-        </label>
-        <label>
-          Password:
-          <input
-            type="password"
-            name="userPassword"
-            placeholder="Enter your password"
-            minLength={2}
-            required
-          />
-        </label>
-        <button type="submit">Sign Up</button>
-      </form>
-    </div>
+        <input
+          className={css.input}
+          type="email"
+          name="userEmail"
+          placeholder="Enter your email"
+          required
+        />
+      </label>
+      <label className={css.label}>
+        <span className={css.labelSpan}> Password </span>
+        <input
+          className={css.input}
+          type="password"
+          name="userPassword"
+          placeholder="Enter your password"
+          minLength={2}
+          required
+        />
+      </label>
+      <button className={css.buttonSignUp} type="submit">
+        Sign Up
+      </button>
+    </form>
   );
 };
 export default RegisterPage;

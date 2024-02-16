@@ -1,49 +1,57 @@
 .form {
-  padding: 15px;
+  padding: 20px;
   margin-bottom: 25px;
   display: flex;
   flex-direction: column;
   border-radius: 9px;
-  border: 1px solid #f3f6f3;
+  border: 1px solid #020302;
+  align-items: center;
+  max-width: 400px;
 }
 
+.phoneBookTitle {
+  font-size: 20px;
+  font-weight: 500;
+  margin-bottom: 25px;
+  color: #020302;
+}
 .label {
   display: flex;
-
   flex-direction: column;
 }
 .spanLabel {
-  font-size: 14px;
+  font-size: 16px;
   margin-bottom: 8px;
-  color: white;
+  color: #020302;
 }
 
 .formInput {
+  font-size: 16px;
   padding: 7px 7px 7px 13px;
-  border: 1px solid #020302;
+  border: 1px solid #0a224a;
   border-radius: 7px;
   margin-bottom: 25px;
-  max-width: 250px;
+  width: 300px;
   outline: none;
   transition: border 0.4s ease, color 0.4s ease;
 }
 
 .formInput:is(:hover, :focus) {
-  border: 1px solid #335a19fa;
+  border: 1px solid #020302;
 }
 .buttonSubmit {
   cursor: pointer;
-  font-size: 14px;
-  padding: 5px;
+  font-size: 16px;
+  padding: 5px 8px;
   max-width: 120px;
-  border: 1px solid #020302;
+  border: 1px solid #0a224a;
   border-radius: 7px;
   color: white;
-  background-color: #506b3db3;
+  background-color: #0a224a;
   outline: none;
   transition: border 0.4s ease;
 }
 
 .buttonSubmit:is(:hover, :focus) {
-  border: 1px solid #335a19fa;
+  border: 1px solid #020302;
 }

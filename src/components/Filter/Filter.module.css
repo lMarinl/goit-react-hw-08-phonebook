@@ -1,19 +1,32 @@
+.contactsFormFilter {
+  border-radius: 9px;
+}
+
+.contactsTitle {
+  font-size: 22px;
+  font-weight: 500;
+  margin-bottom: 25px;
+}
+
 .labelFilter {
   font-size: 14px;
-  color: white;
+  color: #020302;
+  display: flex;
+  flex-direction: column;
 }
 
 .inputFilter {
+  font-size: 16px;
   margin-top: 8px;
   padding: 7px 7px 7px 13px;
-  border: 1px solid #020302;
-  border-radius: 7px;
+  border: 1px solid#0a224a;
+  border-radius: 9px;
   margin-bottom: 25px;
   width: 250px;
   outline: none;
-  transition: border 0.3s ease, color 0.3s ease;
+  transition: border 0.3s ease;
 }
 
 .inputFilter:is(:hover, :focus) {
-  border: 1px solid #335a19fa;
+  border: 1px solid #020302;
 }

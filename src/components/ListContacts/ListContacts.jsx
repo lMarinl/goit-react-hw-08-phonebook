@@ -12,6 +12,7 @@ import { selectedFilter } from '../../redux/filterSlice/filterSelectors.js';
 import { apiGetContacts } from '../../redux/Contacts/contactsOperations.js';
 
 import { STATUSES } from 'utils/Statuses.js';
+import css from './ListContacts.module.css';
 
 export const ContactsList = () => {
   const dispatch = useDispatch();
@@ -37,15 +38,15 @@ export const ContactsList = () => {
   };
   const getFilteredContacts = filteredContacts();
   return (
-    <div>
+    <>
       {status === STATUSES.pending && <Loader />}
       {error && status === STATUSES.error && <p>{error}</p>}
-      <ul>
+      <ul className={css.contactsList}>
         {Array.isArray(getFilteredContacts) &&
           getFilteredContacts?.map(contact => (
             <ContactItem key={contact.id} {...contact} />
           ))}
       </ul>
-    </div>
+    </>
   );
 };

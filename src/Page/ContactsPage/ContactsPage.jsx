@@ -9,13 +9,11 @@ const ContactsPage = () => {
     <>
       {status === STATUSES.pending && <Loader />}
       <div className={css.phoneBookContainer}>
-        <h1 className={css.phoneBookTitle}>Phone book</h1>
         <Form />
-        <div className={css.contactsContainer}>
-          <h2 className={css.contactsTitle}>Contacts</h2>
-          <Filter />
-          <ContactsList />
-        </div>
+      </div>
+      <div className={css.contactsContainer}>
+        <Filter />
+        <ContactsList />
       </div>
     </>
   );

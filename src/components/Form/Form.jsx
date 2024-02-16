@@ -33,13 +33,26 @@ export const Form = () => {
   };
   return (
     <form className={css.form} onSubmit={handelSubmit}>
+      <h2 className={css.phoneBookTitle}>Add a contact</h2>
       <label className={css.label}>
         <span className={css.spanLabel}>Name</span>
-        <input className={css.formInput} type="text" name="name" required />
+        <input
+          className={css.formInput}
+          placeholder="Enter a name"
+          type="text"
+          name="name"
+          required
+        />
       </label>
       <label className={css.label}>
         <span className={css.spanLabel}>Number</span>
-        <input className={css.formInput} type="tel" name="number" required />
+        <input
+          className={css.formInput}
+          type="tel"
+          name="number"
+          placeholder="Enter the number"
+          required
+        />
       </label>
       <button className={css.buttonSubmit} type="submit">
         Add number

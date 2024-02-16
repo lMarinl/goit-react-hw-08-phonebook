@@ -1,7 +1,12 @@
+.contactsList {
+  /* padding: 15px 64px 15px 64px; */
+  max-width: 450px;
+}
+
 .contactItem {
   display: flex;
   justify-content: space-between;
-  margin-bottom: 15px;
+  margin-bottom: 20px;
 }
 
 .contactName {
@@ -12,13 +17,13 @@
   cursor: pointer;
   font-size: 14px;
   padding: 3px 15px;
-  border: 1px solid #020302;
+  border: 1px solid #0a224a;
   border-radius: 5px;
   color: white;
-  background-color: #506b3db3;
+  background-color: #0a224a;
   transition: border 0.4s ease;
 }
 
 .buttonDeleteNumber:is(:hover, :focus) {
-  border: 1px solid #335a19fa;
+  border: 1px solid #020302;
 }

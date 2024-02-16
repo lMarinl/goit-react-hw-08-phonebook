@@ -1,6 +1,6 @@
 import { useDispatch } from 'react-redux';
 import { apiLoginUser } from '../../redux/Auth/authOperations';
-
+import css from '../RegisterPage/RegisterPage.module.css';
 const LoginPage = () => {
   const dispatch = useDispatch();
 
@@ -18,32 +18,32 @@ const LoginPage = () => {
   };
 
   return (
-    <div>
-      <h1>Login</h1>
-
-      <form onSubmit={onSubmit}>
-        <label>
-          Email:
-          <input
-            type="email"
-            name="userEmail"
-            placeholder="Enter your email"
-            required
-          />
-        </label>
-        <label>
-          Password:
-          <input
-            type="password"
-            name="userPassword"
-            placeholder="Enter your password"
-            minLength={7}
-            required
-          />
-        </label>
-        <button type="submit">Sign In</button>
-      </form>
-    </div>
+    <form className={css.form} onSubmit={onSubmit}>
+      <label className={css.label}>
+        <span className={css.labelSpan}> Email</span>
+        <input
+          className={css.input}
+          type="email"
+          name="userEmail"
+          placeholder="Enter your email"
+          required
+        />
+      </label>
+      <label className={css.label}>
+        <span className={css.labelSpan}> Password </span>
+        <input
+          className={css.input}
+          type="password"
+          name="userPassword"
+          placeholder="Enter your password"
+          minLength={7}
+          required
+        />
+      </label>
+      <button className={css.buttonSignUp} type="submit">
+        Sign In
+      </button>
+    </form>
   );
 };
 export default LoginPage;

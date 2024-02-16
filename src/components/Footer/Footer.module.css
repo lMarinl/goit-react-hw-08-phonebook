@@ -1,4 +1,6 @@
-.footer{
+.footer {
   height: 100px;
-  background-color: rgb(39, 112, 88);
+  background-color: #193057;
+  border-top: 1px solid #0a224a;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }

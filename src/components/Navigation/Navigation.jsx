@@ -16,18 +16,16 @@ export const Navigation = () => {
         Home
       </NavLink>
       {isLoggedIn ? (
-        <>
-          <NavLink
-            className={({ isActive }) =>
-              `${css.navLink} ${isActive ? css.active : ''}`
-            }
-            to="/contacts"
-          >
-            Contacts
-          </NavLink>
-        </>
+        <NavLink
+          className={({ isActive }) =>
+            `${css.navLink} ${isActive ? css.active : ''}`
+          }
+          to="/contacts"
+        >
+          Contacts
+        </NavLink>
       ) : (
-        <>
+        <div className={css.containerAuth}>
           <NavLink
             className={({ isActive }) =>
               `${css.navLink} ${isActive ? css.active : ''}`
@@ -44,7 +42,7 @@ export const Navigation = () => {
           >
             Login
           </NavLink>
-        </>
+        </div>
       )}
     </nav>
   );
