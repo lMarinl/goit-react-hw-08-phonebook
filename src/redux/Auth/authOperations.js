@@ -33,7 +33,6 @@ export const apiRefreshUser = createAsyncThunk(
   async (_, thunkApi) => {
     const state = thunkApi.getState();
     const token = state.auth.token;
-    if (!token) return thunkApi.rejectWithValue("You don't have a token!");
     try {
       setToken(token);
       const { data } = await AuthInstance.get('/users/current');

@@ -6,4 +6,15 @@
 .navLink {
   text-decoration: none;
   font-size: 25px;
+  font-weight: 500;
+  color: white;
+  text-decoration: none;
+  padding: 10px 16px;
+  transition: color 0.3s ease, border 0.3s ease;
+}
+
+.active {
+  color: #335a19fa;
+  border-radius: 12px;
+  border: 1px solid #335a19fa;
 }

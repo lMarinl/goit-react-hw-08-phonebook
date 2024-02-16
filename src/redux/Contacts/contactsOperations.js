@@ -19,7 +19,7 @@ export const apiGetContacts = createAsyncThunk(
 );
 
 export const apiAddContact = createAsyncThunk(
-  'contact/apiAddContact',
+  'contacts/apiAddContact',
 
   async (formData, thunkApi) => {
     const state = thunkApi.getState();
@@ -34,11 +34,11 @@ export const apiAddContact = createAsyncThunk(
   }
 );
 export const apiDeleteContact = createAsyncThunk(
-  'contact/apiDeleteContact',
+  'contacts/apiDeleteContact',
   async (id, thunkApi) => {
     try {
-      await AuthInstance.delete('/contacts' / { id });
-      return id;
+      const { data } = await AuthInstance.delete(`/contacts/${id}`);
+      return data;
     } catch (error) {
       return thunkApi.rejectWithValue(error.message);
     }

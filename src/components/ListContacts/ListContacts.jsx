@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 
-import { ContactItem } from 'components';
+import { ContactItem, Loader } from 'components';
 
 import {
   selectedContacts,
@@ -15,10 +15,10 @@ import { STATUSES } from 'utils/Statuses.js';
 
 export const ContactsList = () => {
   const dispatch = useDispatch();
-  const contacts = useSelector(selectedContacts);
-  const error = useSelector(selectedError);
-  const status = useSelector(selectedStatus);
 
+  const contacts = useSelector(selectedContacts);
+  const status = useSelector(selectedStatus);
+  const error = useSelector(selectedError);
   const filter = useSelector(selectedFilter);
 
   useEffect(() => {
@@ -38,6 +38,7 @@ export const ContactsList = () => {
   const getFilteredContacts = filteredContacts();
   return (
     <div>
+      {status === STATUSES.pending && <Loader />}
       {error && status === STATUSES.error && <p>{error}</p>}
       <ul>
         {Array.isArray(getFilteredContacts) &&
