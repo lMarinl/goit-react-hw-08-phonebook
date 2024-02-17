@@ -1,5 +1,8 @@
 .contactsFormFilter {
   border-radius: 9px;
+  margin: 0 auto;
+  max-width: 450px;
+  padding-top: 30px;
 }
 
 .contactsTitle {

@@ -1,0 +1,28 @@
+.userMenu {
+  padding-top: 10px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 10px;
+}
+.userMenuEmail {
+  color: white;
+  padding-bottom: 15xp;
+}
+
+.userMenuButton {
+  cursor: pointer;
+  font-size: 16px;
+  padding: 5px 8px;
+  max-width: 120px;
+  border: 1px solid white;
+  border-radius: 7px;
+  color: white;
+  background-color: #0a224a;
+  outline: none;
+  transition: border 0.4s ease;
+}
+
+.userMenuButton:is(:hover, :focus) {
+  border: 1px solid #020302;
+}

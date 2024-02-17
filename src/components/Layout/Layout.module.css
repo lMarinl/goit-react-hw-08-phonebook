@@ -5,7 +5,7 @@
 }
 
 .header {
-  padding: 64px;
+  padding: 20px 64px 20px 64px;
   background-color: #193057;
   border-bottom: 1px solid #0a224a;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.308);

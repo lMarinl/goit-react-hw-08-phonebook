@@ -7,6 +7,8 @@ import {
   selectedStatus,
 } from '../../redux/Auth/authSelectors';
 
+import css from './UserMenu.module.css';
+
 export const UserMenu = () => {
   const dispatch = useDispatch();
   const userData = useSelector(selectedUserData);
@@ -16,9 +18,10 @@ export const UserMenu = () => {
   const userEmail = userData?.email ?? "Could't get user email";
 
   return (
-    <div>
-      <p>{userEmail}</p>
+    <div className={css.userMenu}>
+      <p className={css.userMenuEmail}>{userEmail}</p>
       <button
+        className={css.userMenuButton}
         type="button"
         onClick={handleLogOut}
         disabled={status === STATUSES.pending}
