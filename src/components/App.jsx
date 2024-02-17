@@ -1,9 +1,10 @@
 import { Navigate, Route, Routes } from 'react-router-dom';
 import { Suspense, lazy, useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import { Layout, Loader, RestrictedRoute, PrivateRoute } from 'components';
 import { apiRefreshUser } from '../redux/Auth/authOperations';
+import { selectedToken } from '../redux/Auth/authSelectors';
 
 const HomePage = lazy(() => import('Page/HomePage/HomePage'));
 const LoginPage = lazy(() => import('Page/LoginPage/LoginPage'));
@@ -11,10 +12,14 @@ const RegisterPage = lazy(() => import('Page/RegisterPage/RegisterPage'));
 const ContactsPage = lazy(() => import('Page/ContactsPage/ContactsPage'));
 
 export const App = () => {
+  const token = useSelector(selectedToken);
   const dispatch = useDispatch();
   useEffect(() => {
+    if (!token) {
+      return;
+    }
     dispatch(apiRefreshUser());
-  }, [dispatch]);
+  }, [dispatch, token]);
   return (
     <>
       <Layout>
