@@ -2,7 +2,7 @@ import { ContactsList, Filter, Form, Loader } from 'components';
 import { useSelector } from 'react-redux';
 import { selectedStatus } from '../../redux/Contacts/contactsSelectors';
 import { STATUSES } from 'utils/Statuses';
-import css from './App.module.css';
+import css from './ContactsPage.module.css';
 const ContactsPage = () => {
   const status = useSelector(selectedStatus);
   return (
