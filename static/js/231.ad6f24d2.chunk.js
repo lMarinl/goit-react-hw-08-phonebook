@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkreact_homework_template=self.webpackChunkreact_homework_template||[]).push([[231],{6231:function(e,t,n){n.r(t),n.d(t,{default:function(){return r}});var o="HomePage_homePageTitle__6k8pb",a=n(184),r=function(){return(0,a.jsx)("h1",{className:o,children:"Welcome to the main page of our phone book! Here you will find a simple and effective tool for managing your contacts. Create, edit, and quickly find the phone numbers you need with our convenient features."})}}}]);
+//# sourceMappingURL=231.ad6f24d2.chunk.js.map
